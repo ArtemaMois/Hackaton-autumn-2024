@@ -5,6 +5,7 @@ namespace App\Services\Auth;
 use App\Models\User;
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class AuthService
 {
@@ -23,5 +24,10 @@ class AuthService
     private function encryptPassword(string $password): string
     {
         return bcrypt($password);
+    }
+
+    public function attempt(array $credentials)
+    {
+        return Auth::attempt($credentials);
     }
 }
