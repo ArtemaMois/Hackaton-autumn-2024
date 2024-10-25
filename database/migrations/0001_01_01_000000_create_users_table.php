@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->string('login')->unique();
-            $table->string('about_me');
-            $table->foreignId('role_id')
+            $table->string('about_me')->nullable();
+            $table->foreignId('role_id')->default(2)
             ->constrained('roles')
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
