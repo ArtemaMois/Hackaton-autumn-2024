@@ -19,8 +19,19 @@ class TaskService
 
     public function getSortedTasks(): array
     {
+        $taskStatuses = $this->getTasksStatuses();
+        $tasks = $this->sortTasks($taskStatuses);
+        return $tasks;
+    }
+
+    private function getTasksStatuses()
+    {
+        return TaskStatus::all();
+    }
+
+    private function sortTasks($taskStatuses)
+    {
         $tasks = [];
-        $taskStatuses = TaskStatus::all();
         foreach($taskStatuses as $status)
         {
             $tasks[$status->title] = $status->tasks;

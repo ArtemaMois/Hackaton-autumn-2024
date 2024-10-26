@@ -23,13 +23,4 @@ class UserController extends Controller
         return response(null, 204);
     }
 
-    public function tasks()
-    {
-        dd(Auth::user()->created_tasks);
-    }
-
-    public function performed()
-    {
-        dd(Auth::user()->performing_tasks);
-    }
 }
