@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -42,4 +45,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'creator_id', 'id');
     }
+
+    public function full_name(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($item) => mb_convert_case($item, MB_CASE_TITLE, "UTF-8"),
+            set: fn ($item) => mb_convert_case($item, MB_CASE_TITLE, "UTF-8")
+        );
+    }
+
+    public function login(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($item) => mb_convert_case($item,  MB_CASE_TITLE, "UTF-8"),
+        );
+    }
+
 }

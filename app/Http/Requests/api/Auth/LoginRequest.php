@@ -18,7 +18,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'login.exists' => 'Аккаунта с таким логином не существует'
+            'login.exists' => 'Аккаунта с таким логином не существует',
+            'login.required' => 'Требуется ввести логин',
+            'password' => 'Пароль не может быть пустым'
         ];
     }
 }
