@@ -2,10 +2,12 @@
 
 namespace App\Services\Task;
 
+use App\Http\Resources\api\Task\TaskResource;
 use App\Models\Role;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use Illuminate\Support\Facades\Auth;
+use Vtiful\Kernel\Excel;
 
 class TaskService
 {
@@ -34,7 +36,10 @@ class TaskService
         $tasks = [];
         foreach($taskStatuses as $status)
         {
-            $tasks[$status->title] = $status->tasks;
+            foreach($status->tasks as $task)
+            {
+                $tasks[] = (object)[ 'code' => $status->title, 'items' => [array_merge(['task_code' => 'task_' . $task->id], TaskResource::make($task)->resolve())]];
+            }
         }
         return $tasks;
     }

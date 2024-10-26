@@ -15,7 +15,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = TaskFacade::getSortedTasks();
-        return response()->json(['status' => 'success', 'data' => ['tasks' => $tasks]]);
+        return response()->json(['status' => 'success', 'data' => $tasks]);
     }
 
     public function store(StoreTaskRequest $request)

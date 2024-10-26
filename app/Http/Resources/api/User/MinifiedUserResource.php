@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\api\Task;
+namespace App\Http\Resources\api\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MinifiedTaskResource extends JsonResource
+class MinifiedUserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
