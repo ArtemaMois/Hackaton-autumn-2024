@@ -12,6 +12,7 @@ class AuthService
     public function registerUser(array $data): User
     {
         $data['password'] = $this->encryptPassword($data['password']);
+        $data['role_id'] = 2;
         $user = User::query()->create($data);
         return $user;
     }

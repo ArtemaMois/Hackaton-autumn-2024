@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('login')->unique();
             $table->string('about_me')->nullable();
-            $table->foreignId('role_id')->default(2)
-            ->constrained('roles')
+            $table->foreignIdFor(Role::class)
+            ->constrained()
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
             $table->string('password');

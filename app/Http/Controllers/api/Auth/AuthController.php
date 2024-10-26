@@ -6,6 +6,7 @@ use App\Facades\Auth\AuthFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\Auth\LoginRequest;
 use App\Http\Requests\api\Auth\RegisterRequest;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
