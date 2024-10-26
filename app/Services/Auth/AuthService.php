@@ -18,7 +18,7 @@ class AuthService
 
     public function getApiToken(User|Authenticatable $user): string
     {
-        return $user->createToken(env('APP_NAME'), ['*'], now()->addHours(12))->plainTextToken;
+        return $user->createToken(env('APP_NAME'), ['*'], now()->addHours(24))->plainTextToken;
     }
 
     private function encryptPassword(string $password): string
@@ -30,4 +30,5 @@ class AuthService
     {
         return Auth::attempt($credentials);
     }
+
 }
