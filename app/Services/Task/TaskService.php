@@ -42,7 +42,7 @@ class TaskService
             {
                 $items[] = (object)TaskResource::make($task)->resolve();
             }
-            $tasks[] = ['code' => $status->code, 'title' => $status->title, 'items' => $items];
+            $tasks[] = ['code' => $status->code, 'title' => $status->title, 'id' => $status->id, 'items' => $items];
         }
         return $tasks;
     }
