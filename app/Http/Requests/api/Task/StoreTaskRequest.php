@@ -10,7 +10,7 @@ class StoreTaskRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'body' => ['required', 'string'],
+            'body' => ['string', 'nullable'],
             'performer_id' => ['required', 'exists:users,id']
         ];
 

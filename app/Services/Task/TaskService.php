@@ -21,26 +21,28 @@ class TaskService
 
     public function getSortedTasks(): array
     {
-        $taskStatuses = $this->getTasksStatuses();
-        $tasks = $this->sortTasks($taskStatuses);
+        $taskStatuses = $this->getTaskStatuses();
+        $tasks = $this->sortTasksByStatus($taskStatuses);
         return $tasks;
     }
 
-    private function getTasksStatuses()
+    private function getTaskStatuses()
     {
-        return TaskStatus::all();
+        return TaskStatus::query()->orderBy('updated_at')->get();
+
     }
 
-    private function sortTasks($taskStatuses)
+    private function sortTasksByStatus($taskStatuses)
     {
         $tasks = [];
         foreach($taskStatuses as $status)
         {
-            foreach($status->tasks as $task)
+            foreach($status->tasks->sortBy('updated_at') as $task)
             {
-                $tasks[] = (object)[ 'code' => $status->title, 'items' => [array_merge(['task_code' => 'task_' . $task->id], TaskResource::make($task)->resolve())]];
+                $tasks[] = (object)['code' => $status->code, 'title' => $status->title, 'items' => [ TaskResource::make($task)->resolve()]];
             }
         }
         return $tasks;
     }
+
 }

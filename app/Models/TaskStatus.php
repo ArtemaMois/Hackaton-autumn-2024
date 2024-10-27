@@ -10,7 +10,8 @@ class TaskStatus extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "title"
+        "title",
+        "code"
     ];
 
     public function tasks(): HasMany

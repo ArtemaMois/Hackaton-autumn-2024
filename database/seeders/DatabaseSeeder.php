@@ -28,15 +28,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         TaskStatus::factory()->create([
-            'title' => 'backlog',
+            'title' => 'Бэклог',
+            'code' => 'backlog'
         ]);
 
         TaskStatus::factory()->create([
-            'title' => 'handling',
+            'title' => 'В разработке',
+            'code' => 'handling'
         ]);
 
         TaskStatus::factory()->create([
-            'title' => 'complete',
+            'title' => 'Выполнено',
+            'code' => 'comleted'
         ]);
 
         // User::factory()->create([

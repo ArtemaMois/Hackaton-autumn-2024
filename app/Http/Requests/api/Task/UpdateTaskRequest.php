@@ -23,7 +23,7 @@ class UpdateTaskRequest extends FormRequest
             'title.string' => 'Заголовок задачи должен быть строкой',
             'body' => 'Описание должно быть строкой',
             'performer_id.exists' => 'Такого исполнителя не существует',
-            'task_status_id.exists' => 'Такого статуса нет '
+            'task_status_id.exists' => 'Такого статуса не существует'
         ];
     }
 }

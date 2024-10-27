@@ -18,6 +18,7 @@ class MinifiedUserResource extends JsonResource
             'id' => $this->id,
             'login' => $this->login,
             'name' => $this->full_name,
+            'role' => $this->role->title
         ];
     }
 }
