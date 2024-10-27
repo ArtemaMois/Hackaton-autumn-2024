@@ -37,10 +37,12 @@ class TaskService
         $tasks = [];
         foreach($taskStatuses as $status)
         {
+            $items = [];
             foreach($status->tasks->sortBy('updated_at') as $task)
             {
-                $tasks[] = (object)['code' => $status->code, 'title' => $status->title, 'items' => [ TaskResource::make($task)->resolve()]];
+                $items[] = (object)TaskResource::make($task)->resolve();
             }
+            $tasks[] = ['code' => $status->code, 'title' => $status->title, 'items' => $items];
         }
         return $tasks;
     }
