@@ -6,6 +6,7 @@ use App\Facades\Task\TaskFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\Task\StoreTaskRequest;
 use App\Http\Requests\api\Task\UpdateTaskRequest;
+use App\Http\Resources\api\Task\TaskResource;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,6 +18,11 @@ class TaskController extends Controller
     {
         $tasks = TaskFacade::getSortedTasks();
         return response()->json(['status' => 'success', 'data' => $tasks]);
+    }
+
+    public function show(Task $task)
+    {
+        return response()->json(['status' => 'success', 'data' => new TaskResource($task)]);
     }
 
     public function store(StoreTaskRequest $request)
