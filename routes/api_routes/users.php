@@ -9,6 +9,4 @@ Route::controller(UserController::class)
 ->group(function () {
     Route::get('/', 'index')->name('account.index');
     Route::patch('/', 'update')->name('account.update');
-    Route::get('/created', 'tasks')->name('account.created');
-    Route::get('/performed', 'performed')->name('account.performed');
 });

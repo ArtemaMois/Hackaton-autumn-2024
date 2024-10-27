@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $user->update($request->validated());
-        return response(null, 204);
+        return response()->json(['status' => 'success', 'user' => $user]);
     }
 
 }

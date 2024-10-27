@@ -46,11 +46,10 @@ class User extends Authenticatable
         return $this->hasMany(Task::class, 'creator_id', 'id');
     }
 
-    public function full_name(): Attribute
+    public function fullName(): Attribute
     {
         return Attribute::make(
             get: fn ($item) => mb_convert_case($item, MB_CASE_TITLE, "UTF-8"),
-            set: fn ($item) => mb_convert_case($item, MB_CASE_TITLE, "UTF-8")
         );
     }
 
@@ -60,5 +59,6 @@ class User extends Authenticatable
             get: fn ($item) => mb_convert_case($item,  MB_CASE_TITLE, "UTF-8"),
         );
     }
+
 
 }

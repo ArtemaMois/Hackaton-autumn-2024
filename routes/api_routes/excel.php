@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ExcelController::class)
 ->prefix('/tasks')
-// ->middleware('auth:sanctum')
 ->group(function () {
-    Route::get('/export', 'export')->name('excel.export');
+    Route::get('/export', 'export')
+    ->withoutMiddleware('auth:sanctum')
+    ->name('excel.export');
 });
